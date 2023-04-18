@@ -26,12 +26,12 @@ const Nav = (props) => {
                 </Link>
             </li>
             <li>
-                <a href='#contact'>
+                <Link to='/#contact'>
                     <div className='icon'>
                         <span className='fa-regular fa-address-card fa-bounce'></span>
                         <span>Contact</span>
                     </div>
-                </a>
+                </Link>
             </li>
             <li>
                 <a href={extLinks.resume} target='_blank' rel='noreferrer' className='button'>
@@ -42,12 +42,12 @@ const Nav = (props) => {
                 </a>
             </li>
             <li>
-                <a href='#projects' className='button'>
+                <Link to='/#projects' className='button'>
                     <div className='icon'>
                         <span className='fa-solid fa-laptop-code fa-spin-pulse'></span>
                         <span>Projects</span>
                     </div>
-                </a>
+                </Link>
             </li>
             <li>
                 <a href={extLinks.gitHub} target='_blank' rel='noreferrer'>
