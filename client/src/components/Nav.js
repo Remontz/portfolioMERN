@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import KG_logo from '../images/KG_logo.jpg'
-import { Link } from 'react-router-dom'
+import { HashLink as Link } from 'react-router-hash-link'
 
 
 const Nav = (props) => {
