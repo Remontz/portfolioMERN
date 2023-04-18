@@ -168,7 +168,7 @@ img:hover {
     height: 20rem;
     width: 30rem;
 }
-@media (min-width: 550px) {
+@media (min-width: 450px) {
     article {
         display: grid;
         grid-template-columns: repeat(10, 1fr); /* text will take up 7, image will take up 4, creating overlap */
