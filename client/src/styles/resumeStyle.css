@@ -22,19 +22,137 @@ html {
     box-sizing: inherit;
 }
 
-body {
-    padding: 0;
-    margin: 0;
+.resume {
+    padding: 2rem;
+    margin: 0 auto;
+    width: 75%;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 25px;
     font-family: var(--ubuntu);
     background-color: var(--white);
     color: var(--black);
 }
+.resume a {
+    color: var(--black);
+    text-decoration: none;
+}
+.resume a:hover {
+    color: var(--suns-orange);
+}
 
-.header {
+
+.header, .skills {
     text-align: center;
     margin: 0 auto;
-    width: 400px;
+    line-height: 1rem;
+}
+.header ul, .skills ul, #projects-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: row;
-    border: 1px solid red;
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1rem;
+    font-family: var(--teko);
 }
+.skills, .projects, .education {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 3rem;
+    padding-right: 10%;
+}
+
+.skills h4, .projects h4, .education h4{
+    font-family: var(--teko);
+    font-size: 2rem;
+    transform: rotate(-30deg);
+}
+.experience h4 {
+    font-family: var(--teko);
+    font-size: 2rem;
+}
+.summary, .experience{
+    text-align: center;
+}
+.summary div, .experience section {
+    display: flex;
+    justify-content: center;
+}
+.experience section {
+    margin: 0 auto;
+}
+.summary h4 {
+    font-family: var(--teko);
+    font-size: 2.3rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+.summary p {
+    text-align: left;
+    width: 800px;
+    line-height: 1.5rem;
+}
+#skills-list, #projects-list, #education-list {
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 1.5rem;
+}
+#experience-list {
+    margin: 0;
+}
+#skills-list section, #projects-list section, #experience-list section, #education-list section {
+    border-bottom: 0.5px solid black;
+    border-right: 0.5px solid black;
+    border-radius: 25px;
+    padding: 5px;
+    width: 200px;
+}
+#experience-list section {
+    width: 650px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+#experience-list section ul li span{
+    position: relative;
+    left: -10px;
+}
+#experience-list h5 {
+    margin-bottom: 0px;
+    padding: 0;
+}
+#experience-list h5 span {
+    font-size: 1rem;
+}
+#skills-list section h5, #projects-list section h5, #experience-list section h5, #eduction-list section h5 {
+    letter-spacing: 0.15rem;
+}
+
+#projects-list section {
+    text-align: center;
+    line-height: 1rem;
+}
+#projects-list {
+    height: 200px;
+    align-content: center;
+}
+#experience-list section div {
+    width: 250px;
+}
+
+#spanner {
+    line-height: 0.5rem;
+}
+#position {
+    padding-top: 3%;
+    line-height: 1rem;
+}
+
