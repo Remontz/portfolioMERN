@@ -1,8 +1,7 @@
-Create Resume and make downloadable to PDF
+make resume downloadable to PDF
 
 //Check about page for responsiveness
 //Add Projects
-//Social icons to appear in new tab
 //Contact section form (hide email)
 //Resume to be one page
 //Entire name on Resume
