@@ -22,7 +22,7 @@ const About = (props) => {
         <Nav />
         <div className='gradient'></div>
         <div className='lite-gray'>
-          <h2>About Kacy Gilbert</h2>
+          <h2>ABOUT - Kacy Gilbert</h2>
           <article id='about'>
             <div className='text'>
               <h3>Thanks for visiting my website</h3>

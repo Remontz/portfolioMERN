@@ -10,6 +10,7 @@
     --seashell: #BEE6C7;
     --ubuntu: "Ubuntu Condensed", sans-serif;
     --teko: Teko, sans-serif;
+    --suns-orange: #dd6c1c;
 }
 
 html {
@@ -306,8 +307,8 @@ img:hover {
     border: 2px solid var(--black);
     background-color: var(--lite-green);
     color: var(--black);
-    font-size: 1.2rem;
-    font-family: var(--teko);
+    border-radius: 5px;
+    /* font-size: 2.25rem; */
     text-transform: uppercase;
 }
 .nav img {
@@ -369,6 +370,9 @@ img:hover {
 .footer [class*="fa-"] {
     font-size: larger;
 }
+
+/* resume styles */
+
 
 @keyframes mirror {
     0% {

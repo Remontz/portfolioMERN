@@ -28,23 +28,23 @@ const Nav = (props) => {
             <li>
                 <Link to='/#contact'>
                     <div className='icon'>
-                        <span className='fa-regular fa-address-card fa-bounce'></span>
+                        <span className='fa-regular fa-address-card fa-fade'></span>
                         <span>Contact</span>
                     </div>
                 </Link>
             </li>
             <li>
-                <a href={extLinks.resume} target='_blank' rel='noreferrer' className='button'>
+                <Link to='/resume' className='button'>
                     <div className='icon'>
                         <span className='fa-brands fa-google-drive fa-flip'></span>
                         <span>Resume</span>
                     </div>
-                </a>
+                </Link>
             </li>
             <li>
                 <Link to='/#projects' className='button'>
                     <div className='icon'>
-                        <span className='fa-solid fa-laptop-code fa-spin-pulse'></span>
+                        <span className='fa-solid fa-laptop-code fa-flip'></span>
                         <span>Projects</span>
                     </div>
                 </Link>

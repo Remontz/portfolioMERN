@@ -7,19 +7,21 @@ const Footer = (props) => {
         <h2>Kacy Gilbert - Software Developer</h2>
         <ul className='footer-list'>
             <li>
-                <a href={extLinks.linkedIn}>
+                <a href={extLinks.linkedIn} target='_blank' rel='noreferrer'>
                     <span className='fa-brands fa-linkedin' aria-hidden='true'></span>
                     <span className='sr-only'>LinkedIn</span>
                 </a>
             </li>
             <li>
-                <a href={extLinks.gitHub}>
+                <a href={extLinks.gitHub} target='_blank' rel='noreferrer'>
                     <span className='fa-brands fa-github' aria-hidden='true'></span>
                     <span className='sr-only'>GitHub</span>
                 </a>
             </li>
             <li>
-                <a href='mailto:gilbertkacy90@gmail.com'>
+            {/* <a href="mailto: Mike Myers"
+onclick="this.href=this.href.replace(' Mike ','MikeMy'); this.href=this.href.replace('Myers','ers@vwx.yz')"> */}
+                <a href='mailto: Kacy Gilbert' onClick="this.href=this.href.replace(' Kacy ', 'gilbertka'); this.href=this.href.replace('Gilbert', 'cy90@gmail.com')">
                     <span className='fa-solid fa-envelope' aria-hidden='true'></span>
                     <span className='sr-only'>Email</span>
                 </a>
