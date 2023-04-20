@@ -119,19 +119,54 @@ const Resume = (props) => {
                 <h4>Education</h4>
                 <div id='education-list'>
                     <section>
-                        <h5>School Name<span>Degree</span></h5>
-                        <p>Dates<span>Location</span></p>
-                        <p>Description of curriculum</p>
+                        <div>
+                            <div id='position'>
+                                <h5>Coding Dojo</h5>
+                            </div>
+                            <div id='spanner'>
+                                <p>&bull; Full Stack Web Development &bull;</p>
+                                <p><small>MAR '22 - JAN '23</small></p>
+                                <p id='degree'><small><a href='https://app.diplomasafe.com/en-US/diploma/dc97a5868cdcba220d15e0ed2bb0d09d53bed719d'>Certification Received</a></small></p>
+                            </div>
+                        </div>
+                        <ul>
+                            <li><span>Extensive exposure to Java, Spring, Python, Flask, mySQL, and MERN Stack through immersive full-stack web development training.</span></li>
+                            <li><span>Developed proficiency in front-end and back-end technologies, including responsive design, RESTful APIs, and database integration.</span></li>
+                            <li><span>Completed numerous coding projects and exercises, including collaborative group projects and individual assignments, demonstrating ability to work both independently and in a team setting.</span></li>
+                        </ul>
                     </section>
                     <section>
-                        <h5>School Name<span>Degree</span></h5>
-                        <p>Dates<span>Location</span></p>
-                        <p>Description of curriculum</p>
+                        <div>
+                            <div id='position'>
+                                <h5>Arizona State University</h5>
+                            </div>
+                            <div id='spanner'>
+                                <p>&bull; Information Technology  &bull;</p>
+                                <p>MAY '19 - N/A</p>
+                            </div>
+                        </div>
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
                     </section>
                     <section>
-                        <h5>School Name<span>Degree</span></h5>
-                        <p>Dates<span>Location</span></p>
-                        <p>Description of curriculum</p>
+                        <div>
+                            <div id='position'>
+                                <h5>ITT Technical Institute</h5>
+                            </div>
+                            <div id='spanner'>
+                                <p>&bull; Electronics Engineering &bull;</p>
+                                <p>NOV '13 - DEC '15</p>
+                                <p><small>A.A.S Electronics Engineering Received</small></p>
+                            </div>
+                        </div>
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
                     </section>
                 </div>
             </section>
