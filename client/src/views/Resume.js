@@ -77,6 +77,7 @@ const Resume = (props) => {
                     </section>
                 </div>
             </section>
+            <div className='divider'></div>
             <section className='projects'>
                 <h4>Projects</h4>
                 <div id='projects-list'>
@@ -113,6 +114,7 @@ const Resume = (props) => {
                     </a>
                 </div>
             </section>
+            <div className='divider'></div>
             <section className='education'>
                 <h4>Education</h4>
                 <div id='education-list'>
@@ -133,6 +135,7 @@ const Resume = (props) => {
                     </section>
                 </div>
             </section>
+            <div className='divider'></div>
             <section className='experience'>
                 <h4>Experience</h4>
                 <div id='experience-list'>
@@ -206,6 +209,7 @@ const Resume = (props) => {
                     </section>
                 </div>
             </section>
+            <div className='divider'></div>
             <section className='summary'>
                 <h4>Summary</h4>
                 <div>
