@@ -1,11 +1,28 @@
-import React, { useState } from 'react'
-import aboutPic from '../images/aboutPic.jpeg'
+import React, { useState, useRef } from 'react'
+import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 import { Helmet } from 'react-helmet'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
 const Resume = (props) => {
     const [extLinks] = useState({gitHub: 'https://github.com/Remontz', linkedIn: 'https://www.linkedin.com/in/kacy-gilbert-225324aa', resume: 'https://docs.google.com/document/d/1HJO2ahlkwIAlqlPvwz_KgdtOdTX_rp2VO11dXUUQVqY/edit', portfolio: 'https://kacy-gilbert-devportfolio.netlify.app/'})
+    const printRef = useRef();
+
+    const handleDownloadPDF = async () => {
+        const element = printRef.current;
+        const canvas = await html2canvas(element);
+        const data = canvas.toDataURL('image/png');
+
+        const pdf = new jsPDF();
+        const imgProps = pdf.getImageProperties(data);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+        pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('devKacyGilbert_Resume.pdf')
+    }
+
   return (
     <div>
         <Helmet>
@@ -26,7 +43,7 @@ const Resume = (props) => {
         <h2>RESUME</h2>
         </div>
         <div className='gradient'></div>
-        <div className='gray resume'>
+        <div ref={printRef} className='gray resume'>
             <section className="header">
                 <h2 id="name">Kacy Gilbert</h2>
                 <h3 id="title">Software Developer</h3>
@@ -146,9 +163,9 @@ const Resume = (props) => {
                             </div>
                         </div>
                         <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                            <li>Studied I.T. w/curriculum focus in Cyber Security, which included computer science and being introduced to Python, Java, and MySQL.</li>
+                            <li>Collaborated with classmates on various projects, developing teamwork and communication skills.</li>
+                            <li>Enjoyed creative writing courses, showcasing a diverse skill set and a well-rounded education.</li>
                         </ul>
                     </section>
                     <section>
@@ -163,9 +180,9 @@ const Resume = (props) => {
                             </div>
                         </div>
                         <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                            <li>Gained hands-on experience with lab simulations and project-based learning.</li>
+                            <li>Earned an A.A.S. in Electronics Engineering with a focus on hardware, including reading electrical diagrams and applying electrical theory.</li>
+                            <li>Introduced to programming, learning C++ and gained experience in PLC programming and utilizing step motors in a capstone project (mock automated assembly line belt).</li>
                         </ul>
                     </section>
                 </div>
@@ -252,6 +269,9 @@ const Resume = (props) => {
                 </div>
             </section>
         </div>
+        <div className='dark-green'>
+            <button type='button' onClick={handleDownloadPDF}>Download to PDF</button>
+        </div>        
         <div className='gradient'></div>
         <Footer />
       </div>
