@@ -28,7 +28,8 @@ const About = (props) => {
               <h3>Thanks for visiting my website</h3>
               <p className='blackbox'>
                 Greetings, I'm Kacy Gilbert, a passionate and detail-oriented software / web developer with a focus on creating immersive digital experiences.  I have a background in audio/video technology, which has honed my skills in problem-solving, project management, and attention to detail.  When I'm not building apps, websites or automating homes, you can find me indulging my love for creative writing under my psuedonym -- and middle name -- 'Remontz'.
-                I am a recent graduate of Coding Dojo's Fullstack Web Development bootcamp, where I gained industry-ready proficiency in the MERN Stack, as well as other popular languages like Java and Python.  I am constantly seeking new challenges and opportunities to learn and grow as a developer, and I believe that my passion and dedication would make me an asset to any team looking for a driven and creative individual. 
+                I am a recent graduate of Coding Dojo's Fullstack Web Development bootcamp, where I gained industry-ready proficiency in the MERN Stack, as well as other popular languages like Java and Python.  I am constantly seeking new challenges and opportunities to learn and grow as a developer, and I believe that my passion and dedication would make me an asset to any team looking for a driven and creative individual.
+                <a href='https://scribblers-sanctuary.netlify.app'>Project I'm currently building.</a>
               </p>
             </div>
             <img src={aboutPic} alt='Kacy Gilbert'/>

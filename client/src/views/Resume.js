@@ -98,13 +98,13 @@ const Resume = (props) => {
             <section className='projects'>
                 <h4>Projects</h4>
                 <div id='projects-list'>
-                    <a href="https://github.com/Remontz/Closet">
+                    <a href='https://scribblers-sanctuary.netlify.app'>
                     <section>
-                        <h5>Closet Organization App</h5>
-                        <p>An inventory management centered around organizing a user's wardrobe.</p>
+                        <h5>Scribbler's Sanctuary</h5>
+                        <p>'The Nest for Aspiring Writers'. A full-stack web app using the MERN stack to provide a modern/intuitive UI/UX design, where users can browse through a variety of written works and engage with other writers.</p>
                         <ul>
                             <li>MERN Stack</li>
-                            <li>Netlify</li>
+                            <li>UI/UX</li>
                         </ul>
                     </section>
                     </a>
