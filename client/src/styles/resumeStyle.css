@@ -22,7 +22,7 @@ html {
     box-sizing: inherit;
 }
 
-.resume {
+#resume {
     padding: 2rem;
     margin: 0 auto;
     width: 75%;
@@ -33,11 +33,11 @@ html {
     background-color: var(--white);
     color: var(--black);
 }
-.resume a {
+#resume a {
     color: var(--black);
     text-decoration: none;
 }
-.resume a:hover {
+#resume a:hover {
     color: var(--suns-orange);
 }
 .dark-green {

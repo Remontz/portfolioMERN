@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {jsPDF} from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Helmet } from 'react-helmet'
@@ -9,19 +9,28 @@ const Resume = (props) => {
     const [extLinks] = useState({gitHub: 'https://github.com/Remontz', linkedIn: 'https://www.linkedin.com/in/kacy-gilbert-225324aa', resume: 'https://docs.google.com/document/d/1HJO2ahlkwIAlqlPvwz_KgdtOdTX_rp2VO11dXUUQVqY/edit', portfolio: 'https://kacy-gilbert-devportfolio.netlify.app/'})
     const printRef = useRef();
 
-    const handleDownloadPDF = async () => {
-        const element = printRef.current;
-        const canvas = await html2canvas(element);
-        const data = canvas.toDataURL('image/png');
+    const [downloading, setDownloading] = useState(false)
 
-        const pdf = new jsPDF();
-        const imgProps = pdf.getImageProperties(data);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        //Convert HTML content to PDF
+        const convertToPDF = async (e) => {
+            e.preventDefault();
+            console.log('downloading')
+            let doc = new jsPDF();
 
-        pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('devKacyGilbert_Resume.pdf')
-    }
+            // Source: Resume element
+            const resElement = document.querySelector('#resume');
+            doc.html(resElement, {
+                callback: function(doc) {
+                    doc.save('kacy-gilbert-resume.pdf');
+                },
+                margin: [10, 10, 10, 10],
+                autoPaging: 'text',
+                x: 0,
+                y: 0,
+                width: 200,
+                windowWidth: 1097
+            });
+        }
 
   return (
     <div>
@@ -43,7 +52,7 @@ const Resume = (props) => {
         <h2>RESUME</h2>
         </div>
         <div className='gradient'></div>
-        <div ref={printRef} className='gray resume'>
+        <div ref={printRef} className='gray' id='resume'>
             <section className="header">
                 <h2 id="name">Kacy Gilbert</h2>
                 <h3 id="title">Software Developer</h3>
@@ -270,7 +279,7 @@ const Resume = (props) => {
             </section>
         </div>
         <div className='dark-green'>
-            <button type='button' onClick={handleDownloadPDF}>Download to PDF</button>
+            <button type='button' onClick={convertToPDF}>Download to PDF</button>
         </div>        
         <div className='gradient'></div>
         <Footer />
