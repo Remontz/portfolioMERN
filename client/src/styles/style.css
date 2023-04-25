@@ -420,3 +420,9 @@ img:hover {
         transform: rotate(180deg);
     }
 }
+
+#exp-div {
+    display: flex;
+    flex-flow: column;
+    row-gap: 3rem;
+}
