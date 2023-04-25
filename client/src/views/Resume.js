@@ -9,28 +9,115 @@ const Resume = (props) => {
     const [extLinks] = useState({gitHub: 'https://github.com/Remontz', linkedIn: 'https://www.linkedin.com/in/kacy-gilbert-225324aa', resume: 'https://docs.google.com/document/d/1HJO2ahlkwIAlqlPvwz_KgdtOdTX_rp2VO11dXUUQVqY/edit', portfolio: 'https://kacy-gilbert-devportfolio.netlify.app/'})
     const printRef = useRef();
 
-    const [downloading, setDownloading] = useState(false)
+    // const [downloading, setDownloading] = useState(false)
 
-        //Convert HTML content to PDF
+        // //Convert HTML content to PDF
+        // const convertToPDF = async (e) => {
+        //     e.preventDefault();
+        //     console.log('downloading')
+        //     let doc = new jsPDF('landscape', 'pt', 'a4', true);
+
+        //     // Source: Resume element
+        //     const resElement = document.querySelector('#resume');
+        //     doc.html(resElement, {
+        //         callback: function(doc) {
+        //             doc.save('kacy-gilbert-resume.pdf');
+        //         },
+        //         margin: [10, 10, 10, 10],
+        //         autoPaging: 'text',
+        //         x: 0,
+        //         y: 0,
+        //         width: 200,
+        //         windowWidth: 1097
+        //     });
+        // }
+
+        // v2.0 of converting HTML to PDF
+        // const convertToPDF = async (e) => {
+        //     e.preventDefault();
+        //     console.log('downloading');
+        //     const imgData = html2canvas.toDataUrl('image/png');
+        //     const imgWidth = 210;
+        //     const pageHeight = 295;
+        //     const imgHeight = html2canvas.height * imgWidth / html2canvas.width;
+        //     let heightLeft = imgHeight;
+            
+        //     let doc = new jsPDF('l', 'mm', 'a4', true);
+        //     let pos = 0;
+
+        //     doc.addImage(imgData, 'PNG', 0, pos, imgWidth, imgHeight);
+        //     heightLeft -= pageHeight;
+
+        //     while(heightLeft >= 0) {
+        //         pos = heightLeft - imgHeight;
+        //         doc.addPage();
+        //         doc.addImage(imgData, 'PNG', 0, pos, imgWidth, imgHeight);
+        //         heightLeft -= pageHeight
+        //     }
+        //     doc.save('kacy-gilbert-resume.pdf')
+        //  }
+
+        // v3.0
+        // const convertToPDF = async (e) => {
+        //     e.preventDefault();
+        //     let doc = new jsPDF();
+
+        //     console.log('downloading');
+
+        //     await html2canvas(document.getElementById('resume'), {
+        //         useCORS: true,
+        //         allowTaint: true,
+
+        //     }).then((canvas) => {
+
+
+        //         doc.addImage(canvas.toDataURL('image/png'), 'PNG', 5, 5, 500, 200)
+        //     })
+        //     doc.save('resume.pdf')
+
+
+
+        //     console.log('downloaded')
+        // }
+
+        //v4.0 
+        // HTML & CSS -> PNG (html2canvas)
+        // PNG -> Add to PDF (jspdf)
+        // Download PDF (jsPDF)
+
         const convertToPDF = async (e) => {
-            e.preventDefault();
-            console.log('downloading')
-            let doc = new jsPDF();
+            document.getElementById('button').innerHTML = 'Currently Downloading'
 
-            // Source: Resume element
-            const resElement = document.querySelector('#resume');
-            doc.html(resElement, {
-                callback: function(doc) {
-                    doc.save('kacy-gilbert-resume.pdf');
-                },
-                margin: [10, 10, 10, 10],
-                autoPaging: 'text',
-                x: 0,
-                y: 0,
-                width: 200,
-                windowWidth: 1097
-            });
+            const resToDownload = document.getElementById('resume');
+            const imgWidth = 210;
+            const pageHeight = 297;
+            const imgHeight = ((document.getElementById('resume').offsetHeight) * 25.4)/96;
+            
+            let doc = new jsPDF('l', 'mm', 'a4', true);
+            let pos = 5;
+            
+            await html2canvas(resToDownload, {
+                allowTaint: true,
+                useCors: true,
+            }).then((canvas) => {
+                let heightLeft = imgHeight;
+                console.log(pageHeight, heightLeft)
+                // canvas convert to png
+                doc.addImage(canvas.toDataURL('image/png'), 'PNG', 5, pos, imgWidth, imgHeight);
+                
+                heightLeft -= (pageHeight - 100);
+                while(heightLeft >= 0) {
+                    pos = heightLeft - imgHeight;
+                    doc.addPage();
+                    doc.addImage(canvas.toDataURL('image/png'), 'PNG', 5, pos, imgWidth, imgHeight);
+                    heightLeft -= pageHeight
+                }
+
+                doc.save('resume.pdf')
+            })
+            document.getElementById('button').innerHTML = 'Downloaded'
         }
+
 
   return (
     <div>
@@ -52,7 +139,7 @@ const Resume = (props) => {
         <h2>RESUME</h2>
         </div>
         <div className='gradient'></div>
-        <div ref={printRef} className='gray' id='resume'>
+        <div ref={printRef} className='resume gray' id='resume'>
             <section className="header">
                 <h2 id="name">Kacy Gilbert</h2>
                 <h3 id="title">Software Developer</h3>
@@ -70,6 +157,7 @@ const Resume = (props) => {
                 </ul>
             </section>
             <div className='black-line'></div>
+            <div className='sections'>
             <section className='skills'>
                 <h4>Skills</h4>
                 <div id='skills-list'>
@@ -110,7 +198,7 @@ const Resume = (props) => {
                     <a href='https://scribblers-sanctuary.netlify.app'>
                     <section>
                         <h5>Scribbler's Sanctuary</h5>
-                        <p>'The Nest for Aspiring Writers'. A full-stack web app using the MERN stack to provide a modern/intuitive UI/UX design, where users can browse through a variety of written works and engage with other writers.</p>
+                        <p><small>A full-stack web app using the MERN stack to provide a modern/intuitive UI/UX design with Reactjs functional components.  The backend utilizes a custom restfulAPI, node, express and MongoDB. </small></p>
                         <ul>
                             <li>MERN Stack</li>
                             <li>UI/UX</li>
@@ -145,53 +233,41 @@ const Resume = (props) => {
                 <h4>Education</h4>
                 <div id='education-list'>
                     <section>
-                        <div>
-                            <div id='position'>
-                                <h5>Coding Dojo</h5>
-                            </div>
-                            <div id='spanner'>
-                                <p>&bull; Full Stack Web Development &bull;</p>
-                                <p><small>MAR '22 - JAN '23</small></p>
-                                <p id='degree'><small><a href='https://app.diplomasafe.com/en-US/diploma/dc97a5868cdcba220d15e0ed2bb0d09d53bed719d'>Certification Received</a></small></p>
-                            </div>
-                        </div>
+                        <h5>Coding Dojo</h5>
+                        <p>
+                            Immersive Frontend & Backend Curriculum<br />
+                            Java, Python, Spring, Flask, DBMS and MERN<br />
+                            Numerous individual & collaborative Projects<br />
+                        </p>
                         <ul>
-                            <li><span>Extensive exposure to Java, Spring, Python, Flask, mySQL, and MERN Stack through immersive full-stack web development training.</span></li>
-                            <li><span>Developed proficiency in front-end and back-end technologies, including responsive design, RESTful APIs, and database integration.</span></li>
-                            <li><span>Completed numerous coding projects and exercises, including collaborative group projects and individual assignments, demonstrating ability to work both independently and in a team setting.</span></li>
+                            <li>&bull; Full Stack Web Development &bull;</li>
+                            <li><small>MAR '22 - JAN '23</small></li>
+                            <small><a href='https://app.diplomasafe.com/en-US/diploma/dc97a5868cdcba220d15e0ed2bb0d09d53bed719d'>Certification Received</a></small>
                         </ul>
                     </section>
                     <section>
-                        <div>
-                            <div id='position'>
-                                <h5>Arizona State University</h5>
-                            </div>
-                            <div id='spanner'>
-                                <p>&bull; Information Technology  &bull;</p>
-                                <p>MAY '19 - N/A</p>
-                            </div>
-                        </div>
+                        <h5>Frontend Masters</h5>
+                        <p>
+                            Curriculum based around emerging Frontend Technologies and Practices<br />
+                            Advanced HTML, CSS and JavaScript Projects<br />
+                            Advanced React, Node.js, Express.js Workshops<br />
+                        </p>
                         <ul>
-                            <li>Studied I.T. w/curriculum focus in Cyber Security, which included computer science and being introduced to Python, Java, and MySQL.</li>
-                            <li>Collaborated with classmates on various projects, developing teamwork and communication skills.</li>
-                            <li>Enjoyed creative writing courses, showcasing a diverse skill set and a well-rounded education.</li>
+                            <li>&bull; Full Stack Web Development &bull;</li>
+                            <li><small>NOV '22 - &infin;</small></li>
+                            <small><a href='https://frontendmasters.com/u/DEV_KacyGilbert/'>Learners Profile</a></small>
                         </ul>
                     </section>
                     <section>
-                        <div>
-                            <div id='position'>
-                                <h5>ITT Technical Institute</h5>
-                            </div>
-                            <div id='spanner'>
-                                <p>&bull; Electronics Engineering &bull;</p>
-                                <p>NOV '13 - DEC '15</p>
-                                <p><small>A.A.S Electronics Engineering Received</small></p>
-                            </div>
-                        </div>
+                        <h5>Arizona State University</h5>
+                        <p>
+                            Information Technology, Cyber Security Curriculum<br />
+                            Computer Science w/Introductions to Python, Java and MySQL<br />
+                            Worked on several collaborative team projects using git to organize workflow<br />
+                        </p>
                         <ul>
-                            <li>Gained hands-on experience with lab simulations and project-based learning.</li>
-                            <li>Earned an A.A.S. in Electronics Engineering with a focus on hardware, including reading electrical diagrams and applying electrical theory.</li>
-                            <li>Introduced to programming, learning C++ and gained experience in PLC programming and utilizing step motors in a capstone project (mock automated assembly line belt).</li>
+                            <li>&bull; Information Technology  &bull;</li>
+                            <li><small>MAY '19 - N/A</small></li>
                         </ul>
                     </section>
                 </div>
@@ -199,87 +275,64 @@ const Resume = (props) => {
             <div className='divider'></div>
             <section className='experience'>
                 <h4>Experience</h4>
-                <div id='experience-list'>
+                <div id='exp-div'>
+                    <div className='experience-list'>
                     <section>
-                        <div>
-                            <div id='position'>
-                                <h5>Phoenix Communications</h5>
-                                <p>&bull;Home Automation Technician&bull;</p>
-                            </div>
-                            <div id='spanner'>
-                                <p>JUL '21 - Present</p>
-                                <span>Bartlett, TN</span>
-                            </div>
-                        </div>
-                        <ul>
-                            <li><span>Skilled in working with audio and video equipment, hardware installation and configuration, and troubleshooting technical issues.</span></li>
-                            <li><span>Experienced with specialized software tools for programming, automation, and control.</span></li>
-                            <li><span>Soft skills such as communication, teamwork, and attention to detail, which are valuable in a junior developer role.</span></li>
-                        </ul>
+                        <h5><br/>Phoenix Communications</h5>
+                        <p>
+                            &#9732;A/V & Home Automation installation, configuration and troubleshooting <br />
+                            &#9732;Utilize specialized software tools for programming automation & control <br />
+                            &#9732;Communication, Teamwork & Attention to Detail<br />
+                            <br />&#9881; JUL '21 - Present   &#9881; Bartlett, TN<br />
+                        </p>
+                        <p><h5>&#9881; Home Automation Technician &#9881;</h5></p>
                     </section>
                     <section>
-                        <div>
-                            <div id='position'>
-                                <h5>Cetacea Wireless</h5>
-                                <p>&bull;Service Technician&bull;</p>
-                            </div>
-                            <div id='spanner'>
-                                <p>NOV '17 - FEB '20</p>
-                                <span>Memphis, TN</span>
-                            </div>
-                        </div>
-                    <ul>
-                        <li>Proficient in diagnosing and finding solutions to complex problems.</li>
-                        <li>Communicated technical concepts in a clear and concise manner through interactions with clients and customers.</li>
-                        <li>Demonstrated attention to detail, troubleshooting, and problem solving through installation/repair of various equipment.</li>
-                    </ul>
+                        <h5><br/>Cetacea Sound Inc</h5>
+                        <p>
+                            &#9732;Wireless & Telemetry Equipment installation, troubleshooting and repair <br/>
+                            &#9732;Communicated technical concepts to customers verbally & documenting <br/>
+                            &#9732;Attention to Detail, Problem Solving & Customer Service  <br/>
+                            <br />&#9881; NOV '17 - FEB '20  &#9881; Memphis, TN<br/>
+                        </p>
+                        <p><h5>&#9881; Service Technician &#9881;</h5></p>
+                    </section>
+                    </div>
+                    <div className='experience-list'>
+                    <section>
+                        <h5><br/>Canon Solutions America</h5>
+                        <p>
+                            &#9732;Diagnose, troubleshoot and repair digital imaging hardware and software systems <br />
+                            &#9732;Adapted to new software tools and platforms to improve productivity<br/>
+                            &#9732;Identify & resolve issues through customer communication<br />
+                            <br/>&#9881; JAN '15 - DEC '16  &#9881; Memphis, TN<br/>
+                        </p>
+                        <p><h5>&#9881; Field Service Technician &#9881;</h5></p>
                     </section>
                     <section>
-                        <div>
-                            <div id='position'>
-                                <h5>Canon Solutions America</h5>
-                                <p>&bull;Service Technician&bull;</p>
-                            </div>
-                            <div id='spanner'>
-                                <p>JAN '15 - DEC '16</p>
-                                <span>Memphis, TN</span>
-                            </div>
-                        </div>
-                        <ul>
-                            <li>Proficiently diagnosed issues with hardware and software systems.</li>
-                            <li>Quick adaptability to new software tools and platforms in a fast-paced development environment.</li>
-                            <li>Experience in working with customers to identify and resolve issues.</li>
-                        </ul>
+                        <h5><br/>U.S. Army</h5>
+                        <p>
+                            &#9732;Operated complex aerial system performing RSTA operations<br/>
+                            &#9732;Constant, Effective communication with several teams under high pressure<br/>
+                            &#9732;Developed strong problem-solving skills and attention to detail<br/>
+                            <br />&#9881; JUN '08 - MAY '12 &#9881; Ft. Lewis, WA<br />
+                        </p>
+                        <p><h5>&#9881; TUAS Operator [15W] &#9881;</h5></p>
                     </section>
-                    <section>
-                        <div>
-                            <div id='position'>
-                                <h5>U.S. Army</h5>
-                                <p>&bull;TUAS Operator (15W)&bull;</p>
-                            </div>
-                            <div id='spanner'>
-                                <p>JUN '08 - MAY '12</p>
-                                <span>Ft Lewis, WA</span>
-                            </div>
-                        </div>
-                        <ul>
-                            <li>Operated complex systems with precision and attention to detail.</li>
-                            <li>Communicated effectively with team members, Air Traffic Control, and ground forces as Mission Coordinator.</li>
-                            <li>Developed strong problem-solving skills and attention to detail in high-pressure, fast-changing environments.</li>
-                        </ul>
-                    </section>
+                    </div>
                 </div>
             </section>
             <div className='divider'></div>
-            <section className='summary'>
+            </div>
+        </div>
+        <section className='summary resume'>
                 <h4>Summary</h4>
                 <div>
                     <p>With a strong background in electronics troubleshooting, military UAV Operations, and technical support, I bring a unique perspective and problem-solving skills to software development.  A recent graduate of a Full-Stack Web Development program, I am excited to utilize my proficiency in programming languages, project management, and teamwork to contribute to dynamic and innovative development teams. </p>
                 </div>
-            </section>
-        </div>
+        </section>
         <div className='dark-green'>
-            <button type='button' onClick={convertToPDF}>Download to PDF</button>
+            <button id='button' type='button' onClick={convertToPDF}>Download to PDF</button>
         </div>        
         <div className='gradient'></div>
         <Footer />

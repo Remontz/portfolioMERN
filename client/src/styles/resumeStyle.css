@@ -33,6 +33,16 @@ html {
     background-color: var(--white);
     color: var(--black);
 }
+#resume .sections {
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 2rem;
+}
+#exp-div {
+    display: flex;
+    flex-flow: column wrap;
+    row-gap: 3rem;
+}
 #resume a {
     color: var(--black);
     text-decoration: none;
@@ -66,7 +76,7 @@ html {
         margin: 0 auto;
         line-height: 1rem;
     }
-    .header ul, .skills ul, #projects-list ul {
+    .header ul, .skills ul, #projects-list ul, #education-list ul, .experience-list ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
@@ -82,7 +92,7 @@ html {
         background-color: #dd6c1c;
         height: 1px;
     }
-    #skills-list section, #projects-list section, #experience-list section, #education-list section {
+    #skills-list section, #projects-list section, #education-list section, .experience-list section {
         border-bottom: 0.5px solid black;
         border-right: 0.5px solid black;
         border-radius: 25px;
@@ -90,8 +100,8 @@ html {
         width: 200px;
         margin: 0 auto;
     }
-    #experience-list section, #education-list section {
-        width: 75%;
+    .experience-list section {
+        width: 450px;
     }
 }
 
@@ -104,7 +114,7 @@ html {
     margin: 0 auto;
     line-height: 1rem;
     }
-    .header ul, .skills ul, #projects-list ul {
+    .header ul, .skills ul, #projects-list ul, #education-list ul, .experience-list ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
@@ -116,7 +126,7 @@ html {
         font-size: 1rem;
         font-family: var(--teko);
     }
-    .skills, .projects {
+    .skills, .projects, .education, .experience {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -124,24 +134,17 @@ html {
         padding-right: 10%;
     }
 
-    .skills h4, .projects h4{
+    .skills h4, .projects h4, .education h4, .experience h4{
         font-family: var(--teko);
         font-size: 2rem;
         transform: rotate(-30deg);
     }
-    .experience h4, .education h4 {
-        font-family: var(--teko);
-        font-size: 2rem;
-    }
-    .summary, .experience, .education{
+    .summary {
         text-align: center;
     }
-    .summary div, .experience section, .education section {
+    .summary div {
         display: flex;
         justify-content: center;
-    }
-    .experience section, .education section {
-        margin: 0 auto;
     }
     .summary h4 {
         font-family: var(--teko);
@@ -154,7 +157,7 @@ html {
         width: 800px;
         line-height: 1.5rem;
     }
-    #skills-list, #projects-list {
+    #skills-list, #projects-list, #education-list, .experience-list{
         display: flex;
         flex-direction: row;
         flex-flow: wrap;
@@ -162,57 +165,30 @@ html {
         align-content: center;
         gap: 1.5rem;
     }
-    #experience-list, #education-list {
-        margin: 0;
-    }
-    #skills-list section, #projects-list section, #experience-list section, #education-list section {
+    
+    #skills-list section, #projects-list section,  #education-list section, .experience-list section {
         border-bottom: 0.5px solid black;
         border-right: 0.5px solid black;
         border-radius: 25px;
         padding: 5px;
         width: 200px;
     }
-    #experience-list section, #education-list section {
-        width: 650px;
-        display: flex;
-        align-content: center;
-        justify-content: center;
+    .experience-list section {
+        width: 450px;
     }
-    #experience-list section ul li span, #education-list section ul li span{
-        position: relative;
-        left: -10px;
-    }
-    #experience-list h5, #education-list h5 {
-        margin-bottom: 0px;
-        padding: 0;
-    }
-    #experience-list h5 span, #education-list h5 {
-        font-size: 1rem;
-    }
-    #skills-list section h5, #projects-list section h5, #experience-list section h5, #education-list section h5 {
+    #skills-list section h5, #projects-list section h5, .experience-list section h5, #education-list section h5 {
         letter-spacing: 0.15rem;
     }
 
-    #projects-list section {
+    #projects-list section, #education-list section, .experience-list section {
         text-align: center;
         line-height: 1rem;
     }
-    #projects-list {
+    #projects-list, #education-list, .experience-list {
         height: 200px;
         align-content: center;
     }
-    #experience-list section div, #education-list section div {
-        width: 250px;
-    }
-
-    #spanner {
-        line-height: 0.5rem;
-    }
-    #position {
-        padding-top: 3%;
-        line-height: 1rem;
-    }
-    #degree {
-        font-family: var(--teko);
+    .hidden {
+        visibility: hidden;
     }
 }
