@@ -103,6 +103,11 @@ html {
     .experience-list section {
         width: 450px;
     }
+    #exp-div {
+        display: flex;
+        flex-flow: column wrap;
+        row-gap: 3rem;
+    }
 }
 
 @media (min-width: 1300px) {
@@ -188,6 +193,12 @@ html {
         height: 200px;
         align-content: center;
     }
+    #exp-div {
+        display: flex;
+        flex-flow: column wrap;
+        row-gap: 3rem;
+    }
+
     .hidden {
         visibility: hidden;
     }
