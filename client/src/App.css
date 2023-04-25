@@ -39,6 +39,6 @@
 
 #exp-div {
   display: flex;
-  flex-flow: column;
+  flex-flow: column wrap;
   row-gap: 3rem;
 }
