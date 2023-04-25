@@ -4,6 +4,7 @@ import html2canvas from 'html2canvas';
 import { Helmet } from 'react-helmet'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import '../styles/resumeStyle.css'
 
 const Resume = (props) => {
     const [extLinks] = useState({gitHub: 'https://github.com/Remontz', linkedIn: 'https://www.linkedin.com/in/kacy-gilbert-225324aa', resume: 'https://docs.google.com/document/d/1HJO2ahlkwIAlqlPvwz_KgdtOdTX_rp2VO11dXUUQVqY/edit', portfolio: 'https://kacy-gilbert-devportfolio.netlify.app/'})

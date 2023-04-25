@@ -195,11 +195,20 @@ html {
     }
     #exp-div {
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: column;
         row-gap: 3rem;
     }
 
     .hidden {
         visibility: hidden;
     }
+}
+#exp-div {
+    display: flex;
+    flex-flow: column;
+    row-gap: 3rem;
+}
+.experience-list {
+    display: flex;
+    flex-flow: row wrap;
 }
