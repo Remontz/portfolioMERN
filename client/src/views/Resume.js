@@ -295,6 +295,7 @@ const Resume = (props) => {
 
             <section className='experience'>
                 <h4>Experience</h4>
+                <div id='experience-list'>
                     <section 
                         onMouseOver = {()=>setPCCHover(true)} 
                         onMouseOut={()=>setPCCHover(false)}
@@ -304,7 +305,7 @@ const Resume = (props) => {
                             &#9732;A/V & Home Automation installation, configuration and troubleshooting <br />
                             &#9732;Utilize specialized software tools for programming automation & control <br />
                             &#9732;Communication, Teamwork & Attention to Detail<br />
-                            {!PCCHover ? <a className='exp-img' href='https://www.pccmem.com/'><img src={PCC} alt='Phoenix Communications Logo w/link to Company Website' /></a> : <span>&#9881; JUL '21 - Present   &#9881; Bartlett, TN</span> }
+                            {PCCHover ? <a className='exp-img' href='https://www.pccmem.com/'><img src={PCC} alt='Phoenix Communications Logo w/link to Company Website' /></a> : <span>&#9881; JUL '21 - Present   &#9881; Bartlett, TN</span> }
                         </p>
                     </section>
 
@@ -317,7 +318,7 @@ const Resume = (props) => {
                             &#9732;Wireless & Telemetry Equipment installation, troubleshooting and repair <br/>
                             &#9732;Communicated technical concepts to customers verbally & documenting <br/>
                             &#9732;Attention to Detail, Problem Solving & Customer Service  <br/>
-                            { !cetaceaHover ? <a className='exp-img' href='https://cetacea.com/'><img src={ CETACEA } alt='Cetacea Wireless Inc w/link to Company Website' /></a> : <span>&#9881; NOV '17 - FEB '20'   &#9881; Memphis, TN</span> }
+                            { cetaceaHover ? <a className='exp-img' href='https://cetacea.com/'><img src={ CETACEA } alt='Cetacea Wireless Inc w/link to Company Website' /></a> : <span>&#9881; NOV '17 - FEB '20'   &#9881; Memphis, TN</span> }
                         </p>
                     </section>
 
@@ -329,7 +330,7 @@ const Resume = (props) => {
                             &#9732;Diagnose, troubleshoot and repair digital imaging hardware and software systems <br />
                             &#9732;Adapted to new software tools and platforms to improve productivity<br/>
                             &#9732;Identify & resolve issues through customer communication<br />
-                            { !CSAHover ? <a className='exp-img' href='https://csa.canon.com/'><img src={CSA} alt='Canon Solution America Logo w/link to Company Website' /></a> : <span> &#9881; JAN '15 - DEC '16  &#9881; Memphis, TN </span> }
+                            { CSAHover ? <a className='exp-img' href='https://csa.canon.com/'><img src={CSA} alt='Canon Solution America Logo w/link to Company Website' /></a> : <span> &#9881; JAN '15 - DEC '16  &#9881; Memphis, TN </span> }
                         </p>
                     </section>
 
@@ -342,9 +343,10 @@ const Resume = (props) => {
                             &#9732;Operated complex aerial system performing RSTA operations<br/>
                             &#9732;Constant, Effective communication with several teams under high pressure<br/>
                             &#9732;Developed strong problem-solving skills and attention to detail<br/>
-                            { !shadowHover ? <a className='exp-img' href='https://www.hrc.army.mil/enlisted/aviation%20branch%20enlisted%20mos%20descriptions%20and%20location#:~:text=Uses%20and%20performs%20operator%20maintenance%20on%20tools%2C%20special%20tools%20and,records%20related%20to%20aircraft%20maintenance.&text=Major%20Duties%3A%20A%20Soldier%20in%20MOS%2015W%20engages%20in%20operating,remotely%20piloting%20of%20the%20UAS.'><img src={ SHADOW } alt='Unmanned Aerial Vehicle, Shadow -- RQ-7B in flight' /></a> : <span>&#9881; JUN '08 - MAY '12 &#9881; Ft. Lewis, WA</span> }
+                            { shadowHover ? <a className='exp-img' href='https://www.hrc.army.mil/enlisted/aviation%20branch%20enlisted%20mos%20descriptions%20and%20location#:~:text=Uses%20and%20performs%20operator%20maintenance%20on%20tools%2C%20special%20tools%20and,records%20related%20to%20aircraft%20maintenance.&text=Major%20Duties%3A%20A%20Soldier%20in%20MOS%2015W%20engages%20in%20operating,remotely%20piloting%20of%20the%20UAS.'><img src={ SHADOW } alt='Unmanned Aerial Vehicle, Shadow -- RQ-7B in flight' /></a> : <span>&#9881; JUN '08 - MAY '12 &#9881; Ft. Lewis, WA</span> }
                         </p>
                     </section>
+                </div>
             </section>
 
             <div className='divider'></div>

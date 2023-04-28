@@ -184,11 +184,13 @@ html {
         align-content: center;
     }
 
-    .experience {
+    #experience-list {
         display: grid;
         grid-template-areas:
-        "PCC Cetacea"
-        "CSA Army" ;
+        ". PCC Cetacea ."
+        ". CSA Army ." ;
+        column-gap: 2rem;
+        row-gap: 2rem;
     }
     #PCC {
         grid-area: PCC;
