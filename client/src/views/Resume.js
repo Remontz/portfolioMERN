@@ -1,13 +1,22 @@
 import React, { useState, useRef } from 'react'
-import {jsPDF} from 'jspdf';
-import html2canvas from 'html2canvas';
+// import {jsPDF} from 'jspdf';
+// import html2canvas from 'html2canvas';
 import { Helmet } from 'react-helmet'
+import RESUME from '../files/kacy-gilbert-resume.pdf'
+import PCC from '../images/PCC.png'
+import CETACEA from '../images/Cetacea.png'
+import CSA from '../images/CSA.png'
+import SHADOW from '../images/Shadow.png'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import '../styles/resumeStyle.css'
 
 const Resume = (props) => {
-    const [extLinks] = useState({gitHub: 'https://github.com/Remontz', linkedIn: 'https://www.linkedin.com/in/kacy-gilbert-225324aa', resume: 'https://docs.google.com/document/d/1HJO2ahlkwIAlqlPvwz_KgdtOdTX_rp2VO11dXUUQVqY/edit', portfolio: 'https://kacy-gilbert-devportfolio.netlify.app/'})
+    const [extLinks] = useState({gitHub: 'https://github.com/Remontz', linkedIn: 'https://www.linkedin.com/in/kacy-gilbert-225324aa', resume: {RESUME}, portfolio: 'https://kacy-gilbert-devportfolio.netlify.app/'})
+    const [PCCHover, setPCCHover] = useState(false);
+    const [cetaceaHover, setCetaceaHover] = useState(false);
+    const [CSAHover, setCSAHover] = useState(false);
+    const [shadowHover, setShadowHover] = useState(false);
     const printRef = useRef();
 
     // const [downloading, setDownloading] = useState(false)
@@ -86,38 +95,38 @@ const Resume = (props) => {
         // PNG -> Add to PDF (jspdf)
         // Download PDF (jsPDF)
 
-        const convertToPDF = async (e) => {
-            document.getElementById('button').innerHTML = 'Currently Downloading'
+        // const convertToPDF = async (e) => {
+        //     document.getElementById('button').innerHTML = 'Currently Downloading'
 
-            const resToDownload = document.getElementById('resume');
-            const imgWidth = 210;
-            const pageHeight = 297;
-            const imgHeight = ((document.getElementById('resume').offsetHeight) * 25.4)/96;
+        //     const resToDownload = document.getElementById('resume');
+        //     const imgWidth = 210;
+        //     const pageHeight = 297;
+        //     const imgHeight = ((document.getElementById('resume').offsetHeight) * 25.4)/96;
             
-            let doc = new jsPDF('l', 'mm', 'a4', true);
-            let pos = 5;
+        //     let doc = new jsPDF('l', 'mm', 'a4', true);
+        //     let pos = 5;
             
-            await html2canvas(resToDownload, {
-                allowTaint: true,
-                useCors: true,
-            }).then((canvas) => {
-                let heightLeft = imgHeight;
-                console.log(pageHeight, heightLeft)
-                // canvas convert to png
-                doc.addImage(canvas.toDataURL('image/png'), 'PNG', 5, pos, imgWidth, imgHeight);
+        //     await html2canvas(resToDownload, {
+        //         allowTaint: true,
+        //         useCors: true,
+        //     }).then((canvas) => {
+        //         let heightLeft = imgHeight;
+        //         console.log(pageHeight, heightLeft)
+        //         // canvas convert to png
+        //         doc.addImage(canvas.toDataURL('image/png'), 'PNG', 5, pos, imgWidth, imgHeight);
                 
-                heightLeft -= (pageHeight - 100);
-                while(heightLeft >= 0) {
-                    pos = heightLeft - imgHeight;
-                    doc.addPage();
-                    doc.addImage(canvas.toDataURL('image/png'), 'PNG', 5, pos, imgWidth, imgHeight);
-                    heightLeft -= pageHeight
-                }
+        //         heightLeft -= (pageHeight - 100);
+        //         while(heightLeft >= 0) {
+        //             pos = heightLeft - imgHeight;
+        //             doc.addPage();
+        //             doc.addImage(canvas.toDataURL('image/png'), 'PNG', 5, pos, imgWidth, imgHeight);
+        //             heightLeft -= pageHeight
+        //         }
 
-                doc.save('resume.pdf')
-            })
-            document.getElementById('button').innerHTML = 'Downloaded'
-        }
+        //         doc.save('resume.pdf')
+        //     })
+        //     document.getElementById('button').innerHTML = 'Downloaded'
+        // }
 
 
   return (
@@ -141,6 +150,7 @@ const Resume = (props) => {
         </div>
         <div className='gradient'></div>
         <div ref={printRef} className='resume gray' id='resume'>
+
             <section className="header">
                 <h2 id="name">Kacy Gilbert</h2>
                 <h3 id="title">Software Developer</h3>
@@ -157,8 +167,11 @@ const Resume = (props) => {
             </li>
                 </ul>
             </section>
+
             <div className='black-line'></div>
+
             <div className='sections'>
+
             <section className='skills'>
                 <h4>Skills</h4>
                 <div id='skills-list'>
@@ -192,7 +205,9 @@ const Resume = (props) => {
                     </section>
                 </div>
             </section>
+
             <div className='divider'></div>
+
             <section className='projects'>
                 <h4>Projects</h4>
                 <div id='projects-list'>
@@ -229,7 +244,9 @@ const Resume = (props) => {
                     </a>
                 </div>
             </section>
+
             <div className='divider'></div>
+
             <section className='education'>
                 <h4>Education</h4>
                 <div id='education-list'>
@@ -273,56 +290,63 @@ const Resume = (props) => {
                     </section>
                 </div>
             </section>
+
             <div className='divider'></div>
+
             <section className='experience'>
                 <h4>Experience</h4>
-                <div id='exp-div'>
-                    <div className='experience-list'>
-                    <section>
-                        <h5><br/>Phoenix Communications</h5>
+                    <section 
+                        onMouseOver = {()=>setPCCHover(true)} 
+                        onMouseOut={()=>setPCCHover(false)}
+                        id='PCC'>
+                        { !PCCHover ? <h5><br/>Phoenix Communications</h5> : <h5 style={{color: 'var(--dark-green)'}}><br />Service Technician</h5> }
                         <p>
                             &#9732;A/V & Home Automation installation, configuration and troubleshooting <br />
                             &#9732;Utilize specialized software tools for programming automation & control <br />
                             &#9732;Communication, Teamwork & Attention to Detail<br />
-                            <br />&#9881; JUL '21 - Present   &#9881; Bartlett, TN<br />
+                            {!PCCHover ? <a className='exp-img' href='https://www.pccmem.com/'><img src={PCC} alt='Phoenix Communications Logo w/link to Company Website' /></a> : <span>&#9881; JUL '21 - Present   &#9881; Bartlett, TN</span> }
                         </p>
-                        <p><h5>&#9881; Home Automation Technician &#9881;</h5></p>
                     </section>
-                    <section>
-                        <h5><br/>Cetacea Sound Inc</h5>
+
+                    <section 
+                        onMouseOver = {()=>setCetaceaHover(true)} 
+                        onMouseOut={()=>setCetaceaHover(false)}
+                        id='Cetacea'>
+                        {!cetaceaHover ? <h5><br/>Cetacea Sound Inc</h5> : <h5 style={{color: 'var(--dark-green)'}}><br /> Service Technician</h5> }
                         <p>
                             &#9732;Wireless & Telemetry Equipment installation, troubleshooting and repair <br/>
                             &#9732;Communicated technical concepts to customers verbally & documenting <br/>
                             &#9732;Attention to Detail, Problem Solving & Customer Service  <br/>
-                            <br />&#9881; NOV '17 - FEB '20  &#9881; Memphis, TN<br/>
+                            { !cetaceaHover ? <a className='exp-img' href='https://cetacea.com/'><img src={ CETACEA } alt='Cetacea Wireless Inc w/link to Company Website' /></a> : <span>&#9881; NOV '17 - FEB '20'   &#9881; Memphis, TN</span> }
                         </p>
-                        <p><h5>&#9881; Service Technician &#9881;</h5></p>
                     </section>
-                    </div>
-                    <div className='experience-list'>
-                    <section>
-                        <h5><br/>Canon Solutions America</h5>
+
+                    <section 
+                        onMouseOver = {()=>setCSAHover(true)} 
+                        onMouseOut={()=>setCSAHover(false)}id='CSA'>
+                        { !CSAHover ? <h5><br/>Canon Solutions America</h5> : <h5 style={{color: 'var(--dark-green)'}}><br /> Field Service Technician</h5> }
                         <p>
                             &#9732;Diagnose, troubleshoot and repair digital imaging hardware and software systems <br />
                             &#9732;Adapted to new software tools and platforms to improve productivity<br/>
                             &#9732;Identify & resolve issues through customer communication<br />
-                            <br/>&#9881; JAN '15 - DEC '16  &#9881; Memphis, TN<br/>
+                            { !CSAHover ? <a className='exp-img' href='https://csa.canon.com/'><img src={CSA} alt='Canon Solution America Logo w/link to Company Website' /></a> : <span> &#9881; JAN '15 - DEC '16  &#9881; Memphis, TN </span> }
                         </p>
-                        <p><h5>&#9881; Field Service Technician &#9881;</h5></p>
                     </section>
-                    <section>
-                        <h5><br/>U.S. Army</h5>
+
+                    <section 
+                        onMouseOver = {()=>setShadowHover(true)} 
+                        onMouseOut={()=>setShadowHover(false)}
+                        id='Army'>
+                        { !shadowHover ? <h5><br/>U.S. Army</h5> : <h5 style={{color: 'var(--dark-green)'}}> <br /> TUAS Operator </h5> }
                         <p>
                             &#9732;Operated complex aerial system performing RSTA operations<br/>
                             &#9732;Constant, Effective communication with several teams under high pressure<br/>
                             &#9732;Developed strong problem-solving skills and attention to detail<br/>
-                            <br />&#9881; JUN '08 - MAY '12 &#9881; Ft. Lewis, WA<br />
+                            { !shadowHover ? <a className='exp-img' href='https://www.hrc.army.mil/enlisted/aviation%20branch%20enlisted%20mos%20descriptions%20and%20location#:~:text=Uses%20and%20performs%20operator%20maintenance%20on%20tools%2C%20special%20tools%20and,records%20related%20to%20aircraft%20maintenance.&text=Major%20Duties%3A%20A%20Soldier%20in%20MOS%2015W%20engages%20in%20operating,remotely%20piloting%20of%20the%20UAS.'><img src={ SHADOW } alt='Unmanned Aerial Vehicle, Shadow -- RQ-7B in flight' /></a> : <span>&#9881; JUN '08 - MAY '12 &#9881; Ft. Lewis, WA</span> }
                         </p>
-                        <p><h5>&#9881; TUAS Operator [15W] &#9881;</h5></p>
                     </section>
-                    </div>
-                </div>
             </section>
+
             <div className='divider'></div>
             </div>
         </div>
@@ -332,9 +356,11 @@ const Resume = (props) => {
                     <p>With a strong background in electronics troubleshooting, military UAV Operations, and technical support, I bring a unique perspective and problem-solving skills to software development.  A recent graduate of a Full-Stack Web Development program, I am excited to utilize my proficiency in programming languages, project management, and teamwork to contribute to dynamic and innovative development teams. </p>
                 </div>
         </section>
+
         <div className='dark-green'>
-            <button id='button' type='button' onClick={convertToPDF}>Download to PDF</button>
-        </div>        
+            <span><a className='button' href={RESUME} download='Kacy_Gilbert_Developer'>Download My Resume</a></span>
+        </div>  
+
         <div className='gradient'></div>
         <Footer />
       </div>

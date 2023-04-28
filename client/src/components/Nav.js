@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import KG_logo from '../images/KG_logo.jpg'
+import RESUME from '../files/kacy-gilbert-resume.pdf'
 import { HashLink as Link } from 'react-router-hash-link'
 
 
 const Nav = (props) => {
-    const [extLinks, /*setExtLinks*/] = useState({gitHub: 'https://github.com/Remontz', linkedIn: 'https://www.linkedin.com/in/kacy-gilbert-225324aa', resume: 'https://docs.google.com/document/d/1HJO2ahlkwIAlqlPvwz_KgdtOdTX_rp2VO11dXUUQVqY/edit'})
+    const [extLinks, /*setExtLinks*/] = useState({gitHub: 'https://github.com/Remontz', linkedIn: 'https://www.linkedin.com/in/kacy-gilbert-225324aa', resume: {RESUME}})
 
   return (
     <div className='nav'>

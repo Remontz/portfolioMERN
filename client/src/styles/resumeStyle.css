@@ -38,11 +38,6 @@ html {
     flex-flow: column wrap;
     row-gap: 2rem;
 }
-#exp-div {
-    display: flex;
-    flex-flow: column wrap;
-    row-gap: 3rem;
-}
 #resume a {
     color: var(--black);
     text-decoration: none;
@@ -71,12 +66,12 @@ html {
 }
 
 @media (min-width: 500px) {
-    .header, .skills, .projects, .education, .experience {
+    .header, .skills, .projects, .education {
         text-align: center;
         margin: 0 auto;
         line-height: 1rem;
     }
-    .header ul, .skills ul, #projects-list ul, #education-list ul, .experience-list ul {
+    .header ul, .skills ul, #projects-list ul, #education-list ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
@@ -92,16 +87,13 @@ html {
         background-color: #dd6c1c;
         height: 1px;
     }
-    #skills-list section, #projects-list section, #education-list section, .experience-list section {
+    #skills-list section, #projects-list section, #education-list section, .experience section {
         border-bottom: 0.5px solid black;
         border-right: 0.5px solid black;
         border-radius: 25px;
         padding: 5px;
         width: 200px;
         margin: 0 auto;
-    }
-    .experience-list section {
-        width: 450px;
     }
     #exp-div {
         display: flex;
@@ -119,7 +111,7 @@ html {
     margin: 0 auto;
     line-height: 1rem;
     }
-    .header ul, .skills ul, #projects-list ul, #education-list ul, .experience-list ul {
+    .header ul, .skills ul, #projects-list ul, #education-list ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
@@ -131,7 +123,7 @@ html {
         font-size: 1rem;
         font-family: var(--teko);
     }
-    .skills, .projects, .education, .experience {
+    .skills, .projects, .education {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -139,7 +131,7 @@ html {
         padding-right: 10%;
     }
 
-    .skills h4, .projects h4, .education h4, .experience h4{
+    .skills h4, .projects h4, .education h4, .experience h4 {
         font-family: var(--teko);
         font-size: 2rem;
         transform: rotate(-30deg);
@@ -162,7 +154,7 @@ html {
         width: 800px;
         line-height: 1.5rem;
     }
-    #skills-list, #projects-list, #education-list, .experience-list{
+    #skills-list, #projects-list, #education-list {
         display: flex;
         flex-direction: row;
         flex-flow: wrap;
@@ -171,44 +163,47 @@ html {
         gap: 1.5rem;
     }
     
-    #skills-list section, #projects-list section,  #education-list section, .experience-list section {
+    #skills-list section, #projects-list section,  #education-list section {
         border-bottom: 0.5px solid black;
         border-right: 0.5px solid black;
         border-radius: 25px;
         padding: 5px;
         width: 200px;
     }
-    .experience-list section {
-        width: 450px;
-    }
-    #skills-list section h5, #projects-list section h5, .experience-list section h5, #education-list section h5 {
+
+    #skills-list section h5, #projects-list section h5, #education-list section h5, .experience section h5 {
         letter-spacing: 0.15rem;
     }
 
-    #projects-list section, #education-list section, .experience-list section {
+    #projects-list section, #education-list section {
         text-align: center;
         line-height: 1rem;
     }
-    #projects-list, #education-list, .experience-list {
+    #projects-list, #education-list {
         height: 200px;
         align-content: center;
     }
-    #exp-div {
-        display: flex;
-        flex-flow: column;
-        row-gap: 3rem;
+
+    .experience {
+        display: grid;
+        grid-template-areas:
+        "PCC Cetacea"
+        "CSA Army" ;
+    }
+    #PCC {
+        grid-area: PCC;
+    }
+    #Cetacea {
+        grid-area: Cetacea;
+    }
+    #CSA {
+        grid-area: CSA;
+    }
+    #Army {
+        grid-area: Army;
     }
 
-    .hidden {
-        visibility: hidden;
-    }
 }
-#exp-div {
-    display: flex;
-    flex-flow: column;
-    row-gap: 3rem;
-}
-.experience-list {
-    display: flex;
-    flex-flow: row wrap;
+.hidden {
+    visibility: hidden;
 }
